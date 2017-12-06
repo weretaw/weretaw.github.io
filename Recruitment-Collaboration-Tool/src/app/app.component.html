@@ -1,0 +1,79 @@
+<div *ngIf="auth.isAuthenticated()">
+  <div id="navbar-wrapper">
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+          </div>
+
+          <div id="navbar-collapse" class="collapse navbar-collapse">
+            <form class="navbar-form navbar-left" role="search">
+
+              <div class="input-group">
+                <input type="text" style="margin-left:-3%" name="Search" title="Search By {{DataService.SearchBy}}" [(ngModel)]="DataService.SearchInput"
+                  class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </span>
+              </div>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a>  Hello {{auth.user}} </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+  </div>
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <aside id="sidebar">
+        <ul id="sidemenu" class="sidebar-nav">
+          <li>
+            <a [routerLink]="['/home']">
+                            <span class="sidebar-icon"><i class="fa fa-home"></i></span>
+                            <span class="sidebar-title">Home</span>
+                        </a>
+          </li>
+          <li>
+            <a class="accordion-toggle collapsed toggle-switch" [routerLink]="['/applicant']">
+                              <span class="sidebar-icon"><i class="fa fa-user"></i></span>
+                              <span class="sidebar-title">Applicant</span>
+                          </a>
+          </li>
+          <li>
+            <a class="accordion-toggle collapsed toggle-switch" [routerLink]="['/jobs']">
+                            <span class="sidebar-icon"><i class="fa fa-briefcase"></i></span>
+                            <span class="sidebar-title">Jobs</span>
+                        </a>
+          </li>
+          <li>
+            <a class="accordion-toggle collapsed toggle-switch" (click)="auth.logout()">    
+                <span class="sidebar-title">Logout</span> 
+              <span class="sidebar-icon fa fa-sign-out"><i class="fa fa-sign-out"></i></span>                                      
+                          </a>
+          </li>
+          <side-navbar style="margin-right: 3%"></side-navbar>
+        </ul>
+      </aside>
+    </div>
+    <main id="page-content-wrapper" role="main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<div *ngIf="!auth.isAuthenticated()">
+  <app-login></app-login>
+</div>

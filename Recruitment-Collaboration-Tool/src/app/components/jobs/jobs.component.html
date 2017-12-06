@@ -1,0 +1,73 @@
+<div style="display:block">
+  <div class="leftSide">
+      <h1 *ngIf="jobIsArchived" class="jobstitel">Jobs</h1>
+    <button type="button" *ngIf="authService.isUserAdmin() && jobIsArchived" (click)="addFormBooli = !addFormBooli" class="btn1">
+        <i style="color:#009edb" title="Add job" class="glyphicon glyphicon-plus" *ngIf="!addFormBooli"></i>
+        {{addFormBooli ? 'Jobs' : ''}}</button>
+    <span *ngIf="authService.isUserAdmin()" class="arspan">
+            <i *ngIf="!addFormBooli" class="fa fa-archive archv" title="All archived jobs" 
+            (click) ="onClickArchived()"aria-hidden="true"></i>
+          </span>
+  </div>
+
+  <div *ngIf="jobIsArchived">
+  
+    <div *ngIf="addFormBooli">
+      <add-new-job (onClickAdd)="onClickAdddForm($event)"></add-new-job>
+    </div>
+
+    <div *ngIf="!addFormBooli">
+      <div style="cursor:pointer" class="container" *ngFor="let Job of arNotArchivedJobs | filter : DataService.SearchInput | filter : this.DataService.arSkillSetPicked| paginate: { itemsPerPage: 6, currentPage: p }">
+        <div *ngIf="!Job.IsArcheive" class="internalCrd">
+          <div class="ApplicantbCard effect__hover" data-id="1">
+            <div class="card__front">
+              <div class="card card-01" class="cardBord">
+
+                <div *ngIf="authService.isUserAdmin()" (click)="archivedJob(Job)">
+                  <i class="fa fa-archive" aria-hidden="true"></i>
+                </div>
+                <div class="JobTitel">{{Job.Postion}}</div>
+                <div class="card-body text-center">
+                  <p class="card-text"> {{Job.RecruitingManager}}</p>
+                  <p class="card-text Description">{{Job.Description}}</p>
+                  <p class="card-text Skills">{{Job.Skills}}</p>
+                  <a class="btn btn-primary text-uppercase" title="View job details" (click)="goToJobDetail(Job)">Explore</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pagination-controls class="rightSide paging" (pageChange)="p = $event" *ngIf="arNotArchivedJobs?.length > 0 && !addFormBooli"></pagination-controls>
+  </div>
+
+
+  <!-- archive -->
+  <div *ngIf="!jobIsArchived">
+    <h1 class="jobstitel"><i>Jobs that archived</i></h1>
+    <br>
+    <div style="cursor:pointer" class="container" *ngFor="let Job of arArchivedJobs | filter : DataService.SearchInput | filter : this.DataService.arSkillSetPicked| paginate: { itemsPerPage: 6, currentPage: p }">
+      <div *ngIf="Job.IsArcheive == true" class="internalCrd">
+        <div class="ApplicantbCard effect__hover" data-id="1">
+          <div class="card__front">
+            <div class="card card-01" class="cardBord">
+              <div (click)="unArchivedJob(Job)">
+                <i class="fa fa-archive" title="Unarchive job" aria-hidden="true"></i>
+              </div>
+              <div class="JobTitel">{{Job.Postion}}</div>
+              <div class="card-body text-center">
+                <p class="card-text"> {{Job.RecruitingManager}}</p>
+                <p class="card-text Description">{{Job.Description}}</p>
+                <p class="card-text Skills">{{Job.Skills}}</p>
+                <a class="btn btn-primary text-uppercase" title="View job details" (click)="goToJobDetail(Job)">Explore</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pagination-controls class="rightSide paging" (pageChange)="p = $event" *ngIf="arArchivedJobs?.length > 0"></pagination-controls>
+    
+  </div>
+</div>

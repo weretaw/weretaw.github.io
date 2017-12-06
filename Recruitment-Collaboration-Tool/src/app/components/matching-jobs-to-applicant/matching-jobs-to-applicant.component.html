@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Updating Recruiter Relevant</h2>
+  <div (click)="UpdatingRecruiterRelevantApplicant()">ddddd</div>
+  <ul *ngFor="let recruite of arRelevantRecruite">
+    <li>{{recruite.Name}} : {{recruite.Email}}</li>
+  </ul>
+
+  <span *ngIf="hideEmailbutton" class="emailIcon">
+    <a class="mailto" href="mailto:{{arRecruiteEmail}}?subject=Added%20a%20new%20candidate%20suitable%20for%20your%20job">
+      <i (click)="emailSend()" class="fa fa-envelope" aria-hidden="true"></i>
+    </a>
+  </span>
+  <div *ngIf="!hideEmailbutton">
+    <div>{{messageOfNotMatching}}</div>
+    <a href="/" [routerLink]="['/applicant']">Go To Applicant</a>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+button{
+    text-decoration: none;
+}
+
+.details li {
+    list-style: none;
+  }
+  li {
+      margin-bottom:10px;
+  }
+
+  .card-content{
+overflow: auto;
+/* width: 100%; */
+  }
+
+  .rightIcons{
+float: right;
+  }
+
+  .Isize{
+    font-size: 250%;
+  }
+
+  .container{
+    margin-top: 4%;
+    width: 100%;
+    margin-left: 17%;
+  }
+
+
+.uploadFile{
+    width: 100%;
+    height: auto;
+}
+#uploadBtn{
+    display: none;
+}
+.uploadbtnlabel{
+    width: 30%;
+    height: 30%;
+    background: lightgray;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.40s;
+	border-radius: 10%;
+	padding:2%;
+}
+
+.uploadbtnlabel:hover{
+    background: none;
+    color: #202020;
+    transition: 0.40s
+}

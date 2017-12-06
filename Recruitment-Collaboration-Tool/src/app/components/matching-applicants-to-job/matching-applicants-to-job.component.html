@@ -1,0 +1,18 @@
+<div style="cursor:pointer" class="container" *ngFor="let applicant of arrApplicantsMatching | filter : dataService.SearchInput| filter : this.dataService.arSkillSetPicked| paginate: { itemsPerPage: 6, currentPage: p }">
+  <div class="ApplicantbCard effect__hover" data-id="1">
+    <div class="card__front">
+      <div class="card card-01" style="border-style: none;">
+
+
+        <div class="card-body text-center">
+          <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 400%;"></i>
+          <hr>
+          <h4 class="card-title">{{applicant.FirstName}} {{applicant.LastName}} </h4>
+          <p class="card-text">{{applicant.Position}}</p>
+          <a class="btn btn-primary text-uppercase">Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pagination-controls class="rightSide paging" (pageChange)="p = $event" *ngIf="arAllApplicants?.length > 0"></pagination-controls>

@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="row col-md-8 centered-form">
+
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit applicant</h3>
+        </div>
+
+        <div class="panel-body">
+          <form #formEditApplicant="ngForm" (ngSubmit)="editApplicantHandler(formEditApplicant.value)" role="form">
+            <div class="row">
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="FirstName" placeholder="First name" [(ngModel)]="editApplicant.FirstName" required
+                    #trvFirstName="ngModel">
+                  <div *ngIf="trvFirstName.errors && (trvFirstName.dirty || trvFirstName.touched)" class="errorMessage">
+                    <div [hidden]="!trvFirstName.errors.required">
+                      First Name is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="LastName" placeholder="Last name" [(ngModel)]="editApplicant.LastName" required
+                    #trvLastName="ngModel">
+                  <div *ngIf="trvLastName.errors && (trvLastName.dirty || trvLastName.touched)" class="errorMessage">
+                    <div [hidden]="!trvLastName.errors.required">
+                      Last Name is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="experience" placeholder="Experience" [(ngModel)]="editApplicant.Experience"
+                    required #trvExperience="ngModel">
+                  <div *ngIf="trvExperience.errors && (trvExperience.dirty || trvExperience.touched)" class="errorMessage">
+                    <div [hidden]="!trvExperience.errors.required">
+                      Experience is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input class="form-control" type="email" name="email" email id="email" placeholder="YOUR EMAIL" [(ngModel)]="editApplicant.Email"
+                    required #trvEmail="ngModel" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)">
+                  <div *ngIf="trvEmail.errors && (trvEmail.dirty || trvEmail.touched)" class="errorMessage">
+                    <div [hidden]="!trvEmail.errors.required">
+                      Email is required
+                    </div>
+                    <div [hidden]="!trvEmail.errors.email">
+                      Email is not valid
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="phoneNumber" placeholder="phoneNumber" [(ngModel)]="editApplicant.PhoneNumber"
+                    required #trvPhoneNumber="ngModel">
+                  <div *ngIf="trvPhoneNumber.errors && (trvPhoneNumber.dirty || trvPhoneNumber.touched)" class="errorMessage">
+                    <div [hidden]="!trvPhoneNumber.errors.required">
+                      Phone number is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <input type="number" class="form-control" min="0" name="age" placeholder="Your age" [(ngModel)]="editApplicant.Age" #trvAge="ngModel">
+                  <div *ngIf="trvAge.errors && (trvAge.dirty || trvAge.touched)" class="errorMessage">
+                    <div [hidden]="!trvAge.errors.required">
+                      Age is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <div *ngIf="currentUpload">
+                    <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+                    Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+                  </div>
+                  <label for="uploadBtn" title="Upload new CV" class="uploadbtnlabel">Upload CV</label>
+                  <input type="file" name="Upload" id="uploadBtn" (change)="detectFiles($event)">
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="female" value="Female" [(ngModel)]="editApplicant.Gender"> Female
+          </label>
+                    <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="male" value="male" [(ngModel)]="editApplicant.Gender"> Male
+          </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Skills</label>
+                <div class="checkbox-inline" *ngFor="let skill of newArSkillSet">
+                  <label>
+                <input type="checkbox" name="skill" [checked]="skill.selected" placeholder="skills" (change)="changeSkillSet(skill)"> {{skill.name}}
+              </label>
+                </div>
+              </div>
+
+              <button type="submit" title="Please fill all required fields!" [disabled]="!formEditApplicant.valid" class="btn btn-primary  btn-block">Edit</button>
+            </div>
+            <div style="color:red"> {{ formValidateMsg }} </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

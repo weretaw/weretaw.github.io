@@ -1,0 +1,37 @@
+.centered-form{
+	margin-top: 2%;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.container{
+	margin-left: 13%;
+	width: 100%;
+}
+
+.uploadFile{
+    width: 100%;
+    height: auto;
+}
+#uploadBtn{
+    display: none;
+}
+.uploadbtnlabel{
+    width: 30%;
+    height: 30%;
+    background: lightgray;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.40s;
+	border-radius: 10%;
+	padding: 2%;
+}
+
+.uploadbtnlabel:hover{
+    background: none;
+    color: #202020;
+    transition: 0.40s
+}

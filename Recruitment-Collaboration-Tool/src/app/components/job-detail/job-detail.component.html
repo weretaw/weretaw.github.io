@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="rightIcons">
+    <button style="background-color:white" title="Click to edit this job" (click)="goToEditJob()" *ngIf="toggleEditIcon" aria-hidden="true">
+      <i class="fa fa-pencil-square-o Isize btn-xs"></i>
+    </button>
+  </div>
+
+  <h2 class="name">{{ pickedJob.Postion }}</h2>
+  <hr>
+
+  <div class="allDetails">
+    <div class="details">
+
+      <p>Recuter manager: {{ pickedJob.RecruitingManager }}</p>
+
+      <p>Minimum required years: {{ pickedJob.MinimumReqYears }}</p>
+
+      <p>Description: <br> {{ pickedJob.Description }} </p>
+
+    </div>
+    <div *ngFor="let skill of pickedJob.Skills" class="skills">
+      <button type="button" class="btn btn-primary">{{skill}} <span class="badge"><i class="fa fa-check" aria-hidden="true"></i></span></button>
+    </div>
+  </div>
+    <button class="btn btn-default btn-block link"><a [routerLink]="['/matching-applicants-to-job']">Suitable applicants</a></button>
+</div>

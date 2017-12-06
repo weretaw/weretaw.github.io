@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row col-md-8 centered-form">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit job</h3>
+      </div>
+
+      <div class="panel-body">
+        <form #trvForm="ngForm" (ngSubmit)="onSubmitEditForm()" class="row">
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input id="IdPostion" type="text" class="form-control" required placeholder="Postion" [(ngModel)]="editJob.Postion" name="Postion"
+                #trvPostion="ngModel">
+              <div *ngIf="trvPostion.errors && (trvPostion.dirty || trvPostion.touched)" class="errorMessage">
+                <div [hidden]="!trvPostion.errors.required">Postion is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <select class="form-control" id="idRecuterManager" name="recruitingManager" placeholder="Recuter Manager" [(ngModel)]="recruitingManager"
+                #trvRecruitingManager="ngModel" required>
+                <option *ngFor="let recutManager of dataService.RecuterManagers"
+               [value]="recutManager.Name">{{ recutManager.Name }}</option>
+              </select>
+              <div *ngIf="trvRecruitingManager.errors && (trvRecruitingManager.dirty || trvRecruitingManager.touched)" class="errorMessage">
+                <div [hidden]="!trvRecruitingManager.errors.required">
+                  Recuter Manager is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input id="IdMinimumReqYears" type="number" class="form-control" required placeholder="Minimum Requst Years" [(ngModel)]="editJob.MinimumReqYears"
+                name="minimumReqYears" #trvMinimumReqYears="ngModel">
+              <div *ngIf="trvMinimumReqYears.errors && (trvMinimumReqYears.dirty || trvMinimumReqYears.touched)" class="errorMessage">
+                <div [hidden]="!trvMinimumReqYears.errors.required">Minimum ReqYears is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <textarea id="IdDescription" class="form-control" required [(ngModel)]="editJob.Description" name="description" placeholder="Description"
+                #trvDescription="ngModel"></textarea>
+              <div *ngIf="trvDescription.errors && (trvDescription.dirty || trvDescription.touched)" class="errorMessage">
+                <div [hidden]="!trvDescription.errors.required">Description is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="IdSkills">Skills</label>
+            <br>
+            <div class="checkbox-inline" *ngFor="let skill of newArSkillSet">
+              <label>
+              <input type="checkbox" class="checkbox checkbox-primary" (change)="skillSetArray(skill)" name="skill" [checked]="skill.selected"> {{skill.name}}
+            </label>
+            </div>
+          </div>
+
+          <button data-dismiss="modal" title="Please fill all required fields!" [disabled]="!trvForm.valid" class="btn btn-primary btn-block">Edit</button>
+          <div style="color:red"> {{ formValidateMsg }} </div>
+        </form>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,126 @@
+.container{ 
+  position: relative;
+  width: 235px;
+  display: inline-block;
+  padding: 3px 0 0 0;
+  margin: 0 0 28px 29px;
+  border: solid 1px black;
+  border-radius: 0px ;
+  background: #ffffff;
+  text-align: center; 
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc;
+}
+div{
+  display: inline-block;
+  cursor:pointer
+}
+.JobIcons{
+  display: inline-block;
+  font-size: 12px;
+}
+.container:hover
+{
+  -moz-box-shadow: 0 0 50px #ccc;
+  -webkit-box-shadow: 0 0 50px #ccc;
+  box-shadow: 0 0 50px #ccc;
+height: auto;
+-webkit-transition: .3s ease-in-out;
+transition: .3s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.JobCard{
+  width: 100%;
+  padding: 4px ;
+  margin: 5px;
+  display: block;
+  box-sizing: border-box;
+}
+.JobTitel{
+  display: inline-block;
+  float: left;
+  font-weight: bold;
+  margin: 0;
+  font-size: 19px;
+  line-height: 16px;
+  min-height: 32px;
+  text-align: left;
+  -webkit-margin-before: 1.33em;
+  -webkit-margin-after: 1.33em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+.clear {
+  clear: both;
+  font-size: 1px;
+  line-height: 1px;
+  display: block;
+  height: 0;
+}
+p{
+  text-align: left;
+  font-size: 12px;
+}
+
+.Description{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.Skills{
+  white-space: nowrap; 
+  width: 16em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.jobstitel{
+font-size: 30px;
+float: left;
+display: inline;
+}
+.arspan{
+float: right;
+}
+.archv{
+  color:  rgba(235, 64, 12, 0.582);
+  font-size: 30px;
+}
+
+.leftSide{
+  float: left;
+  margin: 1%;
+  margin-right: 10%;
+}
+
+.paging{
+  position: absolute;
+  bottom: 3%;
+  right: 5%;
+}
+
+.btn1{
+  border-radius: 50%;
+
+}
+.cardBord{
+  border-style: none;
+}
+
+.internalCrd{
+  padding:3%
+}

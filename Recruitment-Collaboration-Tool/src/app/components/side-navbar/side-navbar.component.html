@@ -1,0 +1,14 @@
+<div class="brand">
+  Search by 
+</div>
+<div class="menu-list">
+  <ul id="menu-content">
+    <li *ngFor="let skill of newArSkillSet | filter">
+        <div class="checkbox checkbox-primary">
+        <label for="checkbox2">
+          <input type="checkbox" id="checkbox2" name="skill" [(ngModel)]="skill.selected" (change)="skillSetArray(skill)"> {{skill.name}}
+        </label>
+      </div>
+    </li>
+  </ul>
+</div> 
